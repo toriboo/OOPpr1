@@ -7,12 +7,14 @@ import java.net.URL;
 import java.net.HttpURLConnection;
 
 public class Search {
-    String question;
-
-    StringBuilder query(String user_question){
+    StringBuilder query(String user_question) {
         String user_question_encode = URLEncoder.encode(user_question, StandardCharsets.UTF_8);
-        question = "https://ru.wikipedia.org/w/api.php?action=query&list=search&utf8=&format=json&srsearch=" +user_question_encode;
-        try{
+        String question = "https://ru.wikipedia.org/w/api.php?action=query&list=search&utf8=&format=json&srsearch=" + user_question_encode;
+        return sendGetReuest(question);
+    }
+
+    StringBuilder sendGetReuest(String question) {
+        try {
             // запрос
             URL url = new URL(question);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -25,17 +27,17 @@ public class Search {
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
-            //System.out.println(response);
-            //заверешение запроса
+
             in.close();
             connection.disconnect();
             return response;
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
+
+
+
 

@@ -2,7 +2,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.List;
 
-public class Parse {
+public class ResponseParser {
     GsonBuilder builder = new GsonBuilder();
     Gson gson = builder.create();
     List<SearchResult> parsing(String response) {

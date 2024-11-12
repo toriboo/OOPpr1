@@ -3,14 +3,14 @@ import java.util.List;
 public class Result {
     int counter = 1;
     int var;
-    Variant variant = new Variant();
-    OpenWiki openWiki = new OpenWiki();
+    private Variant variant = new Variant();
+    private OpenWiki openWiki = new OpenWiki();
     void show(List<SearchResult> results)
     {
         if (results != null && !results.isEmpty()) {
-            for (SearchResult result : results) {
-                System.out.println(counter+ ". " + result.getTitle());
-                counter ++;
+            for (int counter = 0; counter < results.size();counter ++) {
+                SearchResult result = results.get(counter);
+                System.out.println(counter+1 + ". " + result.getTitle());
             }
         } else {
             System.out.println("Нет статей для отображения.");
@@ -19,4 +19,5 @@ public class Result {
         var = variant.choice(counter);
         openWiki.open(var, results);
     }
+
 }
