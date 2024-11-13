@@ -7,10 +7,12 @@ public class Result {
     private OpenWiki openWiki = new OpenWiki();
     void show(List<SearchResult> results)
     {
+        int counter = 0;
         if (results != null && !results.isEmpty()) {
-            for (int counter = 0; counter < results.size();counter ++) {
+            while  (counter < results.size()) {
                 SearchResult result = results.get(counter);
                 System.out.println(counter+1 + ". " + result.getTitle());
+                counter ++;
             }
         } else {
             System.out.println("Нет статей для отображения.");
