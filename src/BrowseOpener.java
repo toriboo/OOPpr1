@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-public class OpenWiki {
+public class  BrowseOpener {
     String startPage = "https://ru.wikipedia.org/w/index.php?curid=";
     ApiResponse apiResponse = new ApiResponse();
     String page;

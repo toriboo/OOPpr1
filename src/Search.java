@@ -7,13 +7,20 @@ import java.net.URL;
 import java.net.HttpURLConnection;
 
 public class Search {
-    StringBuilder query(String user_question) {
-        String user_question_encode = URLEncoder.encode(user_question, StandardCharsets.UTF_8);
-        String question = "https://ru.wikipedia.org/w/api.php?action=query&list=search&utf8=&format=json&srsearch=" + user_question_encode;
-        return sendGetReuest(question);
+    StringBuilder query(String user_request) {
+        if (user_request.isEmpty()){
+            System.out.println("Ошибка.Пустой запрос");
+            System.exit(0);
+            return null;
+        }
+        else
+        {String user_request_encode = URLEncoder.encode(user_request, StandardCharsets.UTF_8);
+        String question = "https://ru.wikipedia.org/w/api.php?action=query&list=search&utf8=&format=json&srsearch=" + user_request_encode;
+        return sendGetRequest(question);}
+
     }
 
-    StringBuilder sendGetReuest(String question) {
+    StringBuilder sendGetRequest(String question) {
         try {
             // запрос
             URL url = new URL(question);

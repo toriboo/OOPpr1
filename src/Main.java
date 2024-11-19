@@ -1,12 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        String user_question = readUserQuestion();
-        String response = performSearch(user_question);
+        String user_request = readUserRequest();
+        String response = performSearch(user_request);
         showResult(response);
     }
-    private static String readUserQuestion(){
-        Question question = new Question();
-        return question.readQuestion();
+    private static String readUserRequest(){
+        Request request = new Request();
+        return request.readRequest();
     }
     private static String performSearch(String user_question){
         Search search = new Search();

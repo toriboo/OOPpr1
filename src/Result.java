@@ -1,10 +1,9 @@
 import java.util.List;
 
 public class Result {
-    int counter = 1;
-    int var;
-    private Variant variant = new Variant();
-    private OpenWiki openWiki = new OpenWiki();
+    int variant;
+    private Selector selector = new Selector();
+    private BrowseOpener browseOpener= new BrowseOpener();
     void show(List<SearchResult> results)
     {
         int counter = 0;
@@ -16,10 +15,10 @@ public class Result {
             }
         } else {
             System.out.println("Нет статей для отображения.");
-            counter = -1;
+            System.exit(0);
         }
-        var = variant.choice(counter);
-        openWiki.open(var, results);
+        variant = selector.choice(counter);
+        browseOpener.open(variant, results);
     }
 
 }
